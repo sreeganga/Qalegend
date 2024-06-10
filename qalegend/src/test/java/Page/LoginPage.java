@@ -20,6 +20,13 @@ public class LoginPage {
     WebElement password_field;
     @FindBy(xpath="//button[@class='btn btn-primary']")//oro element findchyan
 	WebElement login_button;
+    @FindBy(xpath="//input[@id='password']")
+    WebElement invalid_password;
+    @FindBy(xpath="//strong[text()='These credentials do not match our records.']")
+    WebElement error_message;
+    @FindBy(xpath="//a[@class='btn btn-link']")
+	WebElement forgotepassword;
+    
     public void enterUserName(String username)
     {
     	username_field.sendKeys(username);
@@ -33,4 +40,23 @@ public class LoginPage {
     	login_button.click();
     	return new HomePage(driver);
     }
+    public void enterinalidPassword(String password)
+    {
+    	password_field.sendKeys(password);
+    }
+    public void clickOninvalidUserinButton()
+    {
+    	login_button.click();
+    	return;
+    }
+    public String getErrorMessage()
+    {
+  	  String user=error_message.getText();
+  	  return user;
+    }
+    public ResetPage clikOnForgotePassword() {
+		forgotepassword.click();
+		return new ResetPage(driver);
+    }
 }
+

@@ -8,25 +8,40 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Automationcore.Base;
+import Page.LoginPage;
+import Page.ResetPage;
 import Utility.ExelUtility;
 
 public class ResetPageTest extends Base {
 	@Test
-public void verifyErrorMessagewithIvalidEmailid() throws IOException
+public void verifyErrorMessagewithInvalidEmailid() throws IOException
 {
-		driver.get("https://qalegend.com/billing/public/login");
-		WebElement forgotepassword= driver.findElement(By.xpath("//a[@class='btn btn-link']"));
-		forgotepassword.click();
-		WebElement validemailid= driver.findElement(By.xpath("//input[@id='email']"));
-		validemailid.sendKeys(ExelUtility.readStringData(0,0, "reset"));
-		WebElement resetlink= driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
-		resetlink.click();
-		WebElement errormessage= driver.findElement(By.xpath("//strong"));
-		String actualresult=errormessage.getText();
-		String expectedresult=(ExelUtility.readStringData(0,1, "reset"));
-		Assert.assertEquals(actualresult, expectedresult,"invalidmessage");
+		String emailid=ExelUtility.readStringData(0,0, "reset");
+		String Expected_result=ExelUtility.readStringData(0,1, "reset");
+		LoginPage login=new LoginPage(driver);
+		login.clikOnForgotePassword();
+		ResetPage reset=new ResetPage(driver);
+		reset.enterinValidEmailId(emailid);
+		reset.clikOnReseLink();
+		String actaul_result=reset.getErrorMessage();
+       Assert.assertEquals(actaul_result,Expected_result ,"validmessage");
 		
 		
 		
 }
+	@Test
+	public void verifyErrorMessagewithvalidEmailid() throws IOException
+	{
+		String emailid=ExelUtility.readStringData(0,2, "reset");
+		String Expected_result=ExelUtility.readStringData(0,3, "reset");
+		LoginPage login=new LoginPage(driver);
+		login.clikOnForgotePassword();
+		ResetPage reset=new ResetPage(driver);
+		reset.enterinValidEmailId(emailid);
+		reset.clikOnReseLink();
+		String actaul_result=reset.getvalidMessage();
+       Assert.assertEquals(actaul_result,Expected_result ,"invalidmessage");
+		
+		
+	}
 }
