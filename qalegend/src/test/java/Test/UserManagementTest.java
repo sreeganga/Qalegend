@@ -8,28 +8,29 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import Automationcore.Base;
+import Page.HomePage;
+import Page.LoginPage;
 import Utility.ExelUtility;
+import constants.Constants;
 
 public class UserManagementTest extends Base {
 	@Test
 	public void userManagemmentFuntion() throws IOException
 	{
-		driver.get("https://qalegend.com/billing/public/login");
-		 WebElement username= driver.findElement(By.xpath("//input[@id='username']"));
-		 username.sendKeys(ExelUtility.readStringData(0,0, "login"));
-		 WebElement password= driver.findElement(By.xpath("//input[@id='password']"));
-		 password.sendKeys(ExelUtility.readIntegerData(0,1, "login"));
-		 WebElement login= driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
-		 login.click();
-		 WebElement application_tour = driver.findElement(By.xpath("//button[@class='btn btn-default btn-sm']"));
-		    application_tour.click();
-		    WebElement usermanagement_button = driver.findElement(By.xpath("//span[@class='title' and text()='User Management']"));
-		    usermanagement_button.click();
+		String username=ExelUtility.readStringData(0,0,Constants.LOGIN_PAGES);
+		String password=ExelUtility.readIntegerData(0,1, Constants.LOGIN_PAGES);
+		LoginPage login=new LoginPage(driver);
+		login.enterUserName(username);
+		login.enterPassword(password);
+		login.clickOnLoginButton();
+		HomePage home=new HomePage(driver);
+		home.getPPlicationTour();
+		home.getUsermanagement();
 		    List<WebElement> userelements = driver.findElements(By.xpath("//span[@class='title']")); 
 	        for(int i= 0; i < userelements.size();i++)	
 		    { 
-			  String userElementText = userelements.get(i).getText();
-			  System.out.println(userElementText);
+			  String userElement = userelements.get(i).getText();
+			  System.out.println(userElement);
 		    }
 		 
 	}

@@ -15,7 +15,7 @@ public class ExelUtility {
 
 	public static String readStringData(int i , int j, String sheet) throws IOException 
 	{
-		file = new FileInputStream("C:\\Users\\user\\git\\Qalegend\\qalegend\\src\\main\\resources\\Qalegand.xlsx" );
+		file = new FileInputStream("C:\\Users\\user\\git\\Qalegend\\qalegend\\src\\main\\resources\\Qalegandproject.xlsx" );
 		wb = new XSSFWorkbook(file);
 		sh= wb.getSheet(sheet);
 		XSSFRow row = sh.getRow(i);
@@ -26,7 +26,7 @@ public class ExelUtility {
 	}
 		public static String readIntegerData(int i, int j, String sheet) throws IOException 
 		{
-			file = new FileInputStream("C:\\Users\\user\\git\\Qalegend\\qalegend\\src\\main\\resources\\Qalegand.xlsx" );
+			file = new FileInputStream("C:\\Users\\user\\git\\Qalegend\\qalegend\\src\\main\\resources\\Qalegandproject.xlsx" );
 			wb = new XSSFWorkbook(file);
 			sh= wb.getSheet(sheet);
 			XSSFRow row = sh.getRow(i);
