@@ -1,9 +1,12 @@
 package Test;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -87,6 +90,8 @@ public class AddUserTest extends Base {
 		adduser.getconfirmpassword(password_new);
 		adduser.getpercentage(expected_result);
 		adduser.clickonSaveButton();
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("toast-success")));
 		home.clickOnSignoutDashBoad();
 		home.clickOnSignoutButton();
 		login.enterUserName(username);

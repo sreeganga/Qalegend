@@ -13,12 +13,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+
+import Utility.WaitUtility;
 
 public class Base {
 	protected WebDriver driver;
 	public  void intialiseBrowser(String browser)
 	{
-		if(browser.equals("chrome"))
+		if(browser.equals("Chrome"))
 		{
 			driver=new ChromeDriver();
 		}
@@ -37,13 +40,16 @@ public class Base {
 			throw new RuntimeException("invalid browser received");
 		}
 		driver.manage().window().maximize();;
-		driver.get("https://qalegend.com/billing/public/login");
+		
 		
 	}
-@BeforeMethod//first
-	public void setup()
+@BeforeMethod
+@Parameters({"browser","baseurl"})
+	public void setup(String browsername , String url)
 	{
-		intialiseBrowser("chrome");
+		intialiseBrowser("String browsername , String url");
+		driver.get(url);
+		WaitUtility.waitUsingImplicitWait(driver);
 	}
 @AfterMethod
    public void closeBrowser(ITestResult result) throws IOException
