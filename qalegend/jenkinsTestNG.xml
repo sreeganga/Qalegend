@@ -16,7 +16,7 @@
 			<class name="Test.HomePageTest" />
 			<class name="Test.ResetPageTest" />
 			<class name="Test.AddUserTest" />
-			<class name="Test.UsersTest" />
+			<class name="Test.UserTest" />
 			<class name="Test.EditUserTest"/>
 			<class name="Test.UserMangementTest"/>
 		</classes>
