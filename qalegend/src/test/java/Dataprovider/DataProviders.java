@@ -3,8 +3,8 @@ package Dataprovider;
 import org.testng.annotations.DataProvider;
 
 public class DataProviders {
-	@DataProvider(name = "invaliduserCredentials") //to call using name
-	// multilple cases we use dp
+	@DataProvider(name = "invaliduserCredentials")                                       //to call using name
+	                                                                                     // multilple cases we use dp
 public Object[][] userCredetialsData() 
 {
 	Object[][] data = new Object[3][2]; // array type Object

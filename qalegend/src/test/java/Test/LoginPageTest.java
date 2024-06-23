@@ -15,7 +15,7 @@ import constants.Constants;
 import constants.Messages;
 
 public class LoginPageTest extends Base {
-	@Test
+	@Test(groups = "Sanity")
 	public void  verifyUserLoginwithValidCredential() throws IOException 
 	{
 		String username=ExelUtility.readStringData(0,0,Constants.LOGIN_PAGES);
@@ -29,7 +29,7 @@ public class LoginPageTest extends Base {
 		String actaul_result=home.getTextLoginUser();
 		Assert.assertEquals(actaul_result, Expected_result,Messages.LOGINFAILURE);
 	}
-	@Test
+	@Test(groups = "Regression")
 	public void verifyErrorMessageloginwithinvalidCredential() throws IOException
 	{
 		String username=ExelUtility.readStringData(0,0, Constants.LOGIN_PAGES);

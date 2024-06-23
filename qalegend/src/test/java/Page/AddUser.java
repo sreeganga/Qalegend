@@ -13,69 +13,75 @@ public class AddUser {
 			this.driver=driver;
 			PageFactory.initElements(driver,this);//pagefactoryclass create chynnu
 		}
-@FindBy(xpath="//input[@class='form-control' and@placeholder='Mr / Mrs / Miss']")
-WebElement prefix_field;
-@FindBy(xpath="//input[@class='form-control' and@name='first_name']")
-WebElement firstname_field;
-@FindBy(xpath="//input[@class='form-control' and@name='last_name']")
-WebElement lastname_field;
-@FindBy(xpath="//input[@class='form-control' and@name='email']")
-WebElement emailfield;
-@FindBy(xpath="//input[@class='form-control' and@name='username']")
-WebElement usename;
-@FindBy(xpath="//input[@class='form-control' and@name='password']")
-WebElement passwordfield;
-@FindBy(xpath="//input[@class='form-control' and@name='confirm_password']")
-WebElement confirmpasswordfield;
-@FindBy(xpath="//input[@class='form-control' and@name='cmmsn_percent']")
-WebElement percentagefield;
-@FindBy(xpath="//button[@class='btn btn-primary pull-right']")
-WebElement savebutton;
-public void getprefix(String prefix)
-{
-	prefix_field.sendKeys(prefix);
-}
-public void getfirstname(String firstname)
-{
-	firstname_field.sendKeys(firstname);
-}
-public void getlastname(String lastname)
-{
-	lastname_field.sendKeys(lastname);
-	
-}
-public void getemail(String email)
-{
-	emailfield.sendKeys(email);
-	
-}
-public void getusename(String username)
-{
-	usename.sendKeys(username);
-	
-}
-		
-public void getpassword(String password)
-{
-	confirmpasswordfield.sendKeys(password);
-	
-}
-public void getconfirmpassword(String confirmpassword)
-{
-	passwordfield.sendKeys(confirmpassword);
-	
-}
+		  @FindBy(xpath ="//a[@class='btn btn-block btn-primary']//i[@class='fa fa-plus']")
+		    WebElement add_button;
+		    
+		    @FindBy (id="first_name")
+		    WebElement first_namefield;
+		     
+		    @FindBy(id="last_name")
+		    WebElement last_namefield ;
+		    
+		    @FindBy(id="email")
+		    WebElement email_id ;
+		    
+		    @FindBy(id="username")
+		    WebElement username_fieldnewuser;
+		    
+		    @FindBy(id="password")
+		    WebElement password1 ;
+		    
+		    @FindBy(id="confirm_password")
+		    WebElement confirm_password;
+		     
+		    @FindBy(id ="submit_user_button")
+		    WebElement save_button;
+		    
+		    @FindBy(className = "toast-success")
+		    WebElement success_message;
+		    
+		   
+		    
+		    public void clickOnAddUserButton() 
+		    {
+		    	add_button.click();
+		    }
+		   
+		    public void addFirstname(String firstname) 
+		    {
+		    	first_namefield.sendKeys(firstname);
+		    }
+		   
+		    public void addLastname(String lastname) 
+		    {
+		    	last_namefield.sendKeys(lastname);
+		    }
+		   
+		    public void addEmail(String email) 
+		    {
+		    	email_id.sendKeys(email);
+		    }
 
-public void getpercentage(String percentage)
-{
-	percentagefield.sendKeys(percentage);
-	
-}
-public UserPage clickonSaveButton()
-{
-	
-	savebutton.click();
-	return new UserPage(driver);
-	
-}
+		    public void addUserName(String username) 
+		    {
+		    	
+		        username_fieldnewuser.sendKeys(username);
+		    }
+		    
+		    public void addpassword(String password) 
+		    {
+		    	password1.sendKeys(password);
+		    }
+		    
+		    public void addConfirmpassword(String confirmpassword) 
+		    {
+		    	confirm_password.sendKeys(confirmpassword);
+		    }
+		    
+		    public void clickOnSubmitButton() 
+		    {
+		    	save_button.click();
+		    }
+		     
+
 }

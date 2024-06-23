@@ -17,7 +17,7 @@ import constants.Messages;
 
 public class HomePageTest extends Base
 {
-	@Test
+	@Test(groups = "Sanity")
 	public void verifyhomepgetitle() throws IOException
 	  {
 		String username=ExelUtility.readStringData(0,0,Constants.LOGIN_PAGES);
@@ -34,7 +34,7 @@ public class HomePageTest extends Base
 		
 		Assert.assertEquals(actualresult,Expected_result,"invalid title");
 	  }
-	@Test
+	@Test(groups = "Regression" )
 public void userLoginDate() throws IOException
 {
 		String username=ExelUtility.readStringData(0,0,Constants.LOGIN_PAGES);

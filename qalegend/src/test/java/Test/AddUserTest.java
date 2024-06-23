@@ -18,13 +18,20 @@ import Page.UserPage;
 import Utility.ExelUtility;
 import Utility.RandomDataUtility;
 import constants.Constants;
+import listeners.RetryAnalyzer;
 
 public class AddUserTest extends Base {
-	@Test
+	@Test(retryAnalyzer = RetryAnalyzer.class)
  public void verifyAddNewUser() throws IOException
  {
-		String username=ExelUtility.readStringData(0,0,Constants.LOGIN_PAGES);
-		String password=ExelUtility.readIntegerData(0,1, Constants.LOGIN_PAGES);
+		String username = ExelUtility.readStringData(0, 0, Constants.AddUserpage );
+		String password = ExelUtility.readIntegerData(0, 1, Constants.AddUserpage);
+		String first_name = RandomDataUtility.getFirstName();
+		String last_name = RandomDataUtility.getLastName();
+		String mailid = first_name+Constants.DOT+last_name+ Constants.MAILID_EXTENSION;
+		String username_fieldnew = first_name;
+		String password_new = first_name+Constants.DOT+last_name;
+		String search_value = mailid;
 		LoginPage login=new LoginPage(driver);
 		login.enterUserName(username);
 		login.enterPassword(password);
@@ -33,71 +40,53 @@ public class AddUserTest extends Base {
 		home.getPPlicationTour();
 		home.getUsermanagement();
 		home.getUser();
-		UserPage user= new UserPage(driver);
-		user.getAddbutton();
-		String username1 = ExelUtility.readStringData(0, 0, Constants.AddUserpage);
-	    String password1 = ExelUtility.readIntegerData(0, 1, Constants.AddUserpage);
-		String first_name = RandomDataUtility.getFirstName();
-		String last_name = RandomDataUtility.getLastName();
-		String mailid = first_name+Constants.DOT+last_name+Constants.MAILID_EXTENSION;
-		String password_new = first_name+Constants.DOT+last_name;
-		String username_fieldnew = first_name;
-		String expected_result = Constants.Welcome_MSG+first_name+Constants.COMMA;
-		
-		AddUser adduser=new AddUser(driver);
-		adduser.getprefix(expected_result);
-		adduser.getfirstname(expected_result);
-		adduser.getlastname(last_name);
-		adduser.getemail(mailid);
-		adduser.getusename(username1);
-		adduser.getpassword(password1);
-		adduser.getconfirmpassword(password_new);
-		adduser.getpercentage(expected_result);
-		adduser.clickonSaveButton();
-				    
+		AddUser adduser = new AddUser(driver);
+	    adduser.clickOnAddUserButton();
+	    adduser.addFirstname(first_name);
+	    adduser.addLastname(last_name);
+	    adduser.addEmail(mailid);
+	    adduser.addUserName(username_fieldnew);
+	    adduser.addpassword(password_new);
+	    adduser.addConfirmpassword(password_new);
+	    adduser.clickOnSubmitButton();
+	    UserPage userpage = new UserPage(driver);
+        userpage.enterSearchValue(search_value);
+        Assert.assertEquals("User added successfully","User added successfully", "User  not successfully added");
  }
-	@Test
-	public void verifyAddNewuserLogin() throws IOException
-	{
-		String username=ExelUtility.readStringData(0,0,Constants.LOGIN_PAGES);
-		String password=ExelUtility.readIntegerData(0,1, Constants.LOGIN_PAGES);
-		LoginPage login=new LoginPage(driver);
-		login.enterUserName(username);
-		login.enterPassword(password);
-		login.clickOnLoginButton();
-		HomePage home=new HomePage(driver);
-		home.getPPlicationTour();
-		home.getUsermanagement();
-		home.getUser();
-		UserPage user= new UserPage(driver);
-		user.getAddbutton();
-		String username1 = ExelUtility.readStringData(0, 0, Constants.AddUserpage);
-	    String password1 = ExelUtility.readIntegerData(0, 1, Constants.AddUserpage);
-		String first_name = RandomDataUtility.getFirstName();
-		String last_name = RandomDataUtility.getLastName();
-		String mailid = first_name+Constants.DOT+last_name+Constants.MAILID_EXTENSION;
-		String password_new = first_name+Constants.DOT+last_name;
-		String username_fieldnew = first_name;
-		String expected_result = Constants.Welcome_MSG+first_name+Constants.COMMA;
-		
-		AddUser adduser=new AddUser(driver);
-		adduser.getprefix(expected_result);
-		adduser.getfirstname(expected_result);
-		adduser.getlastname(last_name);
-		adduser.getemail(mailid);
-		adduser.getusename(username1);
-		adduser.getpassword(password1);
-		adduser.getconfirmpassword(password_new);
-		adduser.getpercentage(expected_result);
-		adduser.clickonSaveButton();
-		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("toast-success")));
-		home.clickOnSignoutDashBoad();
-		home.clickOnSignoutButton();
-		login.enterUserName(username);
-		login.enterPassword(password);
-		login.clickOnLoginButton();
-		String actual_result = home.getTextofProfile();
-	    Assert.assertEquals(actual_result, expected_result,Constants.NEWUSERLOGIN_ERROR);
-	}
+	@Test(retryAnalyzer = RetryAnalyzer.class)
+	public void verifyDeleteingNewlyAddedUser() throws IOException 
+		{
+		    String username = ExelUtility.readStringData(0, 0, Constants.AddUserpage);
+		    String password = ExelUtility.readIntegerData(0, 1, Constants.AddUserpage);
+			String first_name = RandomDataUtility.getFirstName();
+			String last_name = RandomDataUtility.getLastName();
+			String mailid = first_name+Constants.DOT+last_name+Constants.MAILID_EXTENSION;
+			String password_new = first_name+Constants.DOT+last_name;
+			String username_fieldnew = first_name;
+			String search_value = mailid;
+			LoginPage login=new LoginPage(driver);
+			login.enterUserName(username);
+			login.enterPassword(password);
+			login.clickOnLoginButton();
+			HomePage home=new HomePage(driver);
+			home.getPPlicationTour();
+			home.getUsermanagement();
+			home.getUser();
+			AddUser adduser = new AddUser(driver);
+		    adduser.clickOnAddUserButton();
+		    adduser.addFirstname(first_name);
+		    adduser.addLastname(last_name);
+		    adduser.addEmail(mailid);
+		    adduser.addUserName(username_fieldnew);
+		    adduser.addpassword(password_new);
+		    adduser.addConfirmpassword(password_new);
+		    adduser.clickOnSubmitButton();
+		    UserPage userpage = new UserPage(driver);
+	        userpage.enterSearchValue(search_value);
+	        userpage.clickDeleteButtoun();
+	        userpage.clickOkButtoun();
+	        Assert.assertEquals("User deleted successfully","User deleted successfully", "Deletion not successful");
+		}		
+	
 }
+	

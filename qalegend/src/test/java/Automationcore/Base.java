@@ -21,6 +21,7 @@ public class Base {
 	protected WebDriver driver;
 	public  void intialiseBrowser(String browser)
 	{
+		
 		if(browser.equals("Chrome"))
 		{
 			driver=new ChromeDriver();
@@ -43,14 +44,16 @@ public class Base {
 		
 		
 	}
-@BeforeMethod
-@Parameters({"browser","baseurl"})
-	public void setup(String browsername , String url)
-	{
-		intialiseBrowser("String browsername , String url");
-		driver.get(url);
-		WaitUtility.waitUsingImplicitWait(driver);
-	}
+	@BeforeMethod
+	@Parameters({"browser","baseurl"})
+	  public void setup(String browsername , String url) 
+	  { 
+		
+		  intialiseBrowser(browsername); 
+		  driver.get(url);
+		  WaitUtility.waitUsingImplicitWait(driver);
+		  
+	  }
 @AfterMethod
    public void closeBrowser(ITestResult result) throws IOException
    {
@@ -60,9 +63,9 @@ public class Base {
 	}
 	driver.quit();
    }
-  public void takeScreenshort(ITestResult result) throws IOException//screen short nte name adukanula interface
+  public void takeScreenshort(ITestResult result) throws IOException                              //screen short nte name adukanula interface
   {
-	  TakesScreenshot takescreenshot= (TakesScreenshot)driver;//interface create chythu
+	  TakesScreenshot takescreenshot= (TakesScreenshot)driver;                            //interface create chythu
 
 		File screenshot=takescreenshot.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenshot,new File("./ScreenShort/"+result.getName()+".png"));

@@ -11,20 +11,22 @@ import Automationcore.Base;
 import Page.LoginPage;
 import Page.ResetPage;
 import Utility.ExelUtility;
+import constants.Constants;
+import constants.Messages;
 
 public class ResetPageTest extends Base {
 	@Test
 public void verifyErrorMessagewithInvalidEmailid() throws IOException
 {
-		String emailid=ExelUtility.readStringData(0,0, "reset");
-		String Expected_result=ExelUtility.readStringData(0,1, "reset");
+		String emailid=ExelUtility.readStringData(0,0,Constants.RESETPAGE);
+		String Expected_result=ExelUtility.readStringData(0,1, Constants.RESETPAGE);
 		LoginPage login=new LoginPage(driver);
 		login.clikOnForgotePassword();
 		ResetPage reset=new ResetPage(driver);
 		reset.enterinValidEmailId(emailid);
 		reset.clikOnReseLink();
 		String actaul_result=reset.getErrorMessage();
-       Assert.assertEquals(actaul_result,Expected_result ,"validmessage");
+       Assert.assertEquals(actaul_result,Expected_result ,Messages.ERROR_MSGMISMATCH);
 		
 		
 		
@@ -32,15 +34,15 @@ public void verifyErrorMessagewithInvalidEmailid() throws IOException
 	@Test
 	public void verifyErrorMessagewithvalidEmailid() throws IOException
 	{
-		String emailid=ExelUtility.readStringData(0,2, "reset");
-		String Expected_result=ExelUtility.readStringData(0,3, "reset");
+		String emailid=ExelUtility.readStringData(0,2, Constants.RESETPAGE);
+		String Expected_result=ExelUtility.readStringData(0,3, Constants.RESETPAGE);
 		LoginPage login=new LoginPage(driver);
 		login.clikOnForgotePassword();
 		ResetPage reset=new ResetPage(driver);
 		reset.enterinValidEmailId(emailid);
 		reset.clikOnReseLink();
 		String actaul_result=reset.getvalidMessage();
-       Assert.assertEquals(actaul_result,Expected_result ,"invalidmessage");
+       Assert.assertEquals(actaul_result,Expected_result ,Messages.SUCCESS_MSGMISMATCH);
 		
 		
 	}
