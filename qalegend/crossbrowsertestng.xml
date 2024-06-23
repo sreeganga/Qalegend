@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Functional Suite">
+<suite name="Funtional Suite">
 	<listeners>
 	<listener class-name="listeners.Annotation_Transformer"/>
 </listeners>
-  <test name="Chrome Test">
+  <test  name="Chrome Test">
 	  <parameter name="browser" value="Chrome"></parameter>
 	  <parameter name="baseurl" value="https://qalegend.com/billing/public/login"></parameter>
     <classes>
-        <class name="Test.LoginPageTest"/>
-			 <class name = "Test.HomePageTest"/>
+        <class name = "Test.LoginPageTest"/>
+        <class name = "Test.HomePageTest"/>
     </classes>
   </test> <!-- Test -->
   <test  name="Edge Test">
 	  <parameter name="browser" value="edge"></parameter>
 	  <parameter name="baseurl" value="https://qalegend.com/billing/public/login"></parameter>
-    <classes>
-        <class name="Test.ResetPageTest"/>
+     <classes>
         <class name = "Test.UserTest"/>
+        <class name = "Test.UserMangementTest"/>
     </classes>
     </test>
    <test  name="FireFox Test">
 	  <parameter name="browser" value="FireFox"></parameter>
 	  <parameter name="baseurl" value="https://qalegend.com/billing/public/login"></parameter>
-    <classes>
-        <class name="Test.AddUserTest"/>
-         <class name="Test.EditUserTest"/>
-        
-       
-    </classes> 
-    
+     <classes>
+        <class name = "Test.LoginPageTest"/>
+        <class name = "Test.HomePageTest"/>
+    </classes>
   </test> <!-- Test -->
 	
 	

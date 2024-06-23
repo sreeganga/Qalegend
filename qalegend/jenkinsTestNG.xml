@@ -12,13 +12,13 @@
 		<parameter name="baseurl"
 			value="https://qalegend.com/billing/public/login"></parameter>
 		<classes>
-			<class name="test.LoginPageTest" />
-			<class name="test.HomePageTest" />
-			<class name="test.ResetPageTest" />
-			<class name="test.AddUserTest" />
-			<class name="test.UsersTest" />
-			<class name="test.EditUserTest"/>
-			<class name="test.UserMangementTest"/>
+			<class name="Test.LoginPageTest" />
+			<class name="Test.HomePageTest" />
+			<class name="Test.ResetPageTest" />
+			<class name="Test.AddUserTest" />
+			<class name="Test.UsersTest" />
+			<class name="Test.EditUserTest"/>
+			<class name="Test.UserMangementTest"/>
 		</classes>
   </test> <!-- Test -->
 	
