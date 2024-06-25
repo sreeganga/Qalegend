@@ -1,5 +1,7 @@
 package constants;
 
+import java.io.File;
+
 public class Constants {
  public static final String LOGIN_PAGES="login";
  public static final String HOMEPAGES="Home";
@@ -12,4 +14,6 @@ public class Constants {
  public static final String DOT = ".";
  public static final String NEWUSERLOGIN_ERROR = "Login in with new User is not successful";
  public static final String Edit_PAGES="edituser";
+ public static final String CONFIGFILE = System.getProperty("user.dir") + File.separator + "src" + File.separator
+         + "main" + File.separator + "resources" + File.separator + "config.properties";
 }
