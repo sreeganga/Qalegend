@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AddUser {
 	
-		WebDriver driver;//instance create chythu
-		public AddUser(WebDriver driver)//classint consturtor
+		WebDriver driver;                                                                 //instance create chythu
+		public AddUser(WebDriver driver)                                                 //classint consturtor
 		{
 			this.driver=driver;
-			PageFactory.initElements(driver,this);//pagefactoryclass create chynnu
+			PageFactory.initElements(driver,this);                                          //pagefactoryclass create chynnu
 		}
 		  @FindBy(xpath ="//a[@class='btn btn-block btn-primary']//i[@class='fa fa-plus']")
 		    WebElement add_button;

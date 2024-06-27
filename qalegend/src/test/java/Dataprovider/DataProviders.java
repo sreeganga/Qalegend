@@ -7,7 +7,7 @@ public class DataProviders {
 	                                                                                     // multilple cases we use dp
 public Object[][] userCredetialsData() 
 {
-	Object[][] data = new Object[3][2]; // array type Object
+	Object[][] data = new Object[3][2];                                                    // array type Object
 	data[0][0] = "sree@gmail.com";
 	data[0][1] = "sree123@";
 	

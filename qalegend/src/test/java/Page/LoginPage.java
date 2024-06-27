@@ -14,11 +14,11 @@ public class LoginPage {
 		
 	}
 	
-	@FindBy(xpath="//input[@id='username']")//oro element findchyan
+	@FindBy(xpath="//input[@id='username']")                                              //oro element findchyan
 	WebElement username_field;
     @FindBy(xpath="//input[@id='password']")
     WebElement password_field;
-    @FindBy(xpath="//button[@class='btn btn-primary']")//oro element findchyan
+    @FindBy(xpath="//button[@class='btn btn-primary']")                                        //oro element findchyan
 	WebElement login_button;
     @FindBy(xpath="//input[@id='password']")
     WebElement invalid_password;

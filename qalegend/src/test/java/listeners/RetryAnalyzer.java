@@ -8,7 +8,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 	int retrylimit = 3;
 	
 	
-	public boolean retry(ITestResult result) { // test case status using ITestResult ie pass or fail
+	public boolean retry(ITestResult result) {                                                // test case status using ITestResult ie pass or fail
 		// TODO Auto-generated method stub
 		if(count < retrylimit) 
 		{
